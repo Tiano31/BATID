@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - BATID</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo2.png" alt="BATID Logo">
+        </div>
+        <div class="toggle-button">
+            <div id="dictionary-tab" class="active">Dictionary</div>
+            <div id="translator-tab">Translator</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Word" id="search-input">
+            <button class="search-button" id="search-button">
+                <img src="./images/search.png" alt="Search" class="search-icon">
+            </button>
+        </div>
+        <div class="dropdown">
+            <button class="account-button" id="account-button">
+                <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-content" id="dropdown-content">
+                <a href="account_user.html">My Account</a>
+                <a href="about_user.html">About</a>
+                <a href="help_user.html">Help</a>
+                <a href="#">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="account-info">
+            <h2>My Account</h2>
+            <div class="account-section">
+                <h3>Profile Information</h3>
+                <form id="profile-form">
+                    <div class="form-group">
+                        <label for="name">Username:</label>
+                        <input type="text" id="name" name="name" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="john.doe@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <div class="password-field">
+                            <input type="password" id="password" name="password">
+                            <i class="fas fa-eye" id="toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="retype-password">Re-type Password:</label>
+                        <div class="password-field">
+                            <input type="password" id="retype-password" name="retype-password">
+                            <i class="fas fa-eye" id="toggle-retype-password"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-save">Save</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 E-Diksyonaryo</p>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Terms & Privacy</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dictionaryTab = document.getElementById('dictionary-tab');
+            const translatorTab = document.getElementById('translator-tab');
+
+            dictionaryTab.addEventListener('click', () => {
+                dictionaryTab.classList.add('active');
+                translatorTab.classList.remove('active');
+                window.location.href = 'dashboard_user.html';
+            });
+
+            translatorTab.addEventListener('click', () => {
+                translatorTab.classList.add('active');
+                dictionaryTab.classList.remove('active');
+                window.location.href = 'translator_user.html';
+            });
+
+            document.getElementById('account-button').addEventListener('click', toggleDropdown);
+
+            window.onclick = function(event) {
+                if (!event.target.matches('#account-button')) {
+                    document.getElementById("dropdown-content").style.display = "none";
+                }
+            };
+
+            const togglePassword = document.getElementById('toggle-password');
+            const passwordInput = document.getElementById('password');
+
+            togglePassword.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                togglePassword.classList.toggle('fa-eye-slash');
+            });
+
+            const toggleRetypePassword = document.getElementById('toggle-retype-password');
+            const retypePasswordInput = document.getElementById('retype-password');
+
+            toggleRetypePassword.addEventListener('click', () => {
+                const type = retypePasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                retypePasswordInput.setAttribute('type', type);
+                toggleRetypePassword.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById("dropdown-content");
+            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>

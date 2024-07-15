@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BATID</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./images/logo2.png" alt="BATID Logo">
+        </div>
+        <div class="toggle-button">
+            <div class="active" id="dictionary-tab">Dictionary</div>
+            <div id="translator-tab">Translator</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Word" id="search-input">
+            <button class="search-button" id="search-button">
+                <img src="./images/search.png" alt="Search" class="search-icon">
+            </button>
+        </div>
+        <div class="dropdown">
+            <button class="account-button" id="account-button">
+                <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-content" id="dropdown-content">
+                <a href="account_user.html">My Account</a>
+                <a href="about_user.html">About</a>
+                <a href="help_user.html">Help</a>
+                <a href="#">Log Out</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="about">
+            <h2>About</h2>
+            <p>
+                **BATID: E-Diksyonaryo Batangueño** is an innovative online interactive dictionary created with the purpose of preserving and promoting the rich linguistic heritage of Batangueño local terms. This comprehensive digital resource serves as a vital tool for both residents and enthusiasts eager to explore and understand the unique nuances of the Batangueño dialect.
+            </p>
+            <p>
+                Launched in [Month, Year], BATID aims to bridge the gap between generations, ensuring that the vibrant vocabulary of the Batangueño people is not only documented but also made accessible to a wider audience. The platform features an extensive collection of entries that include definitions, usage examples, and cultural contexts, fostering a deeper appreciation for the local language.
+            </p>
+            <p>
+                Designed with user engagement in mind, BATID incorporates interactive elements that encourage users to contribute their own insights and experiences related to specific terms. This collaborative approach not only enriches the content but also builds a community of language lovers committed to the preservation of Batangueño heritage.
+            </p>
+            <p>
+                By providing an easily navigable interface and a wealth of information, BATID positions itself as an indispensable resource for educators, students, and anyone interested in the linguistic richness of the Batangueño culture. Whether you’re a native speaker or a curious learner, BATID opens the door to a treasure trove of knowledge, ensuring that Batangueño local terms continue to thrive in the digital age.
+            </p>
+        </section>
+        
+
+    </main>
+    <footer>
+        <p>&copy; 2024 E-Diksyonaryo</p>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Terms & Privacy</a></li>
+        </ul>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dictionaryTab = document.getElementById('dictionary-tab');
+            const translatorTab = document.getElementById('translator-tab');
+            const dropdownContent = document.getElementById("dropdown-content");
+
+            dictionaryTab.addEventListener('click', () => {
+                dictionaryTab.classList.add('active');
+                translatorTab.classList.remove('active');
+                window.location.href = 'dashboard_user.html';
+            });
+
+            translatorTab.addEventListener('click', () => {
+                translatorTab.classList.add('active');
+                dictionaryTab.classList.remove('active');
+                window.location.href = 'translator_user.html';
+            });
+
+            document.getElementById('account-button').addEventListener('click', () => {
+                dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+            });
+
+            window.onclick = function(event) {
+                if (!event.target.matches('#account-button')) {
+                    dropdownContent.style.display = "none";
+                }
+            };
+        });
+    </script>
+</body>
+</html>
